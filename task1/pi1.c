@@ -16,6 +16,9 @@ double calc_pi(unsigned n)
     double x;
     int i;
     omp_set_num_threads(1);
+    /* 
+    Perform the code in an OpenMP parallel region for loop with a shared sum 
+    */
     #pragma omp parallel private(i, x) shared(sum)
     
     #pragma omp for schedule(static)

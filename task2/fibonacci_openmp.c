@@ -14,6 +14,9 @@ int fib(int n)
   }
   else
   {
+    /* 
+    Perform the code in an OpenMP parallel region for tasks
+    */
 #pragma omp task shared(x)
     x = fib(n - 1);
 #pragma omp task shared(y)
