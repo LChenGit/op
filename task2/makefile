@@ -10,5 +10,5 @@ clean:
 	rm fib_serial fib_openmp
 
 run:
-	echo '1000000\n' | ./fib_serial
-	echo '1000000\n' | ./fib_openmp
+	echo '45\n' | ./fib_serial
+	echo '45\n' | ./fib_openmp
