@@ -52,7 +52,5 @@ int main(int argc, char *argv[])
     free(a);
     free(b);
 
-    clock_t end = clock();
-    time_spent += (double)(end - begin) / CLOCKS_PER_SEC; // end time of execution
     printf("calculation took %lf sec\n", omp_get_wtime() - starttime);
 }
