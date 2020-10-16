@@ -5,3 +5,6 @@ dot_openmp: dot_openmp.c
 	gcc -fopenmp dot_openmp.c -o dot_openmp
 clean:
 	rm dot_serial dot_openmp
+run:
+	./dot_serial
+	./dot_openmp
