@@ -16,11 +16,11 @@ int main(int argc, char *argv[])
     printf("Starting omp_dotprod_openmp. Using %d threads\n", threads);
 
     /* Assign storage for dot product vectors */
-    a = (double *)malloc(len * threads * sizeof(double));
-    b = (double *)malloc(len * threads * sizeof(double));
+    a = (double *)malloc(len * sizeof(double));
+    b = (double *)malloc(len * sizeof(double));
 
     /* Initialize dot product vectors */
-    for (i = 0; i < len * threads; i++)
+    for (i = 0; i < len; i++)
     {
         a[i] = 1.0;
         b[i] = a[i];
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
         tid = omp_get_thread_num();
 #pragma omp for reduction(+ \
                           : sum)
-        for (i = 0; i < len * threads; i++)
+        for (i = 0; i < len; i++)
         {
             sum += (a[i] * b[i]);
             psum = sum;
@@ -53,4 +53,5 @@ int main(int argc, char *argv[])
     free(b);
 
     printf("calculation took %lf sec\n", omp_get_wtime() - starttime);
+    return 0;
 }
