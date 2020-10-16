@@ -9,10 +9,6 @@
 
 int main(int argc, char *argv[])
 {
-    omp_set_num_threads(NUMTHREADS);
-    double time_spent = 0.0;
-    clock_t begin = clock(); // start time of execution
-
     int i, tid, len = VECLEN, threads = NUMTHREADS;
     double *a, *b;
     double sum, psum;
@@ -48,7 +44,7 @@ int main(int argc, char *argv[])
             sum += (a[i] * b[i]);
             psum = sum;
         }
-        printf("Thread %d partial sum = %f\n", tid, psum);
+        // printf("Thread %d partial sum = %f\n", tid, psum);
     }
 
     printf("Done. OpenMP version: sum  =  %f \n", sum);
@@ -58,6 +54,5 @@ int main(int argc, char *argv[])
 
     clock_t end = clock();
     time_spent += (double)(end - begin) / CLOCKS_PER_SEC; // end time of execution
-    printf("Time elpased for parallel program is %f seconds\n", time_spent);
     printf("calculation took %lf sec\n", omp_get_wtime() - starttime);
 }
